@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_Instance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SingleInstanceActivity"/>
+
+    <Button
+        android:id="@+id/bt_Instance1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="InstanceActivity1"/>
+    <Button
+        android:id="@+id/bt_singleInstanceActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="SingleInstanceActivity"/>
+    <Button
+        android:id="@+id/bt_Instance2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="InstanceActivity2"/>
+
+
+</LinearLayout>
