@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.example.administrator.inentlearning.MainActivity">
+
+
+    <EditText
+        android:id="@+id/et_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="输入 intent 要携带的数据"/>
+    <Button
+        android:id="@+id/bt_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Intent启动Activity"/>
+    <Button
+        android:id="@+id/bt_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Intent开启广播"/>
+    <Button
+        android:id="@+id/bt_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Intent开启服务"/>
+    <Button
+        android:id="@+id/bt_system"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Intent开启系统服务"/>
+</LinearLayout>
