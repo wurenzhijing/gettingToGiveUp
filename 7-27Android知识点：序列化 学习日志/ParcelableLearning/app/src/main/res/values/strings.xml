@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ParcelableLearning</string>
+    <string name="title_activity_parcelable">ParcelableActivity</string>
+</resources>
