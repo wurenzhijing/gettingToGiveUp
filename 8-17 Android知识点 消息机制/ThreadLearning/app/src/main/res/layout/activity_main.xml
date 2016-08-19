@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.threadlearning.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="时间 " />
+    <Button
+        android:id="@+id/btn_thread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="开启Time线程"/>
+
+    <TextView
+        android:id="@+id/tv_loacal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ThreadLocal " />
+    <Button
+        android:id="@+id/btn_loopThread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="开启ThreadLocal线程"/>
+
+    <Button
+        android:id="@+id/btn_messageQuene"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="向子线程发送消息"/>
+</LinearLayout>
