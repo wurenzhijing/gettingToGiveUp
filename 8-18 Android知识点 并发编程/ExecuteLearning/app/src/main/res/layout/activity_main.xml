@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.example.administrator.executelearning.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="线程池" />
+    <Button
+        android:id="@+id/btn_cachePool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="newCachedThreadPool"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/btn_fixedPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="newFixedThreadPool"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/btn_scheduledPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="newScheduledThreadPool"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_singlePool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="newSingleThreadPool"
+        android:textAllCaps="false"/>
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"></ListView>
+
+</LinearLayout>
