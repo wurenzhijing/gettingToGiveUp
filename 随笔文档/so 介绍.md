@@ -30,6 +30,8 @@ Android 七种 CPU 架构，每种都关联着一个相应的ABI。
 
 #### .so 文件位置
 
+  ![](https://diycode.b0.upaiyun.com/photo/2017/e4bd7d20f209338dad541a8062e06518.png?_=6824727)
+
  - Android Studio 工程放在 jniLibs/ABI 目录中（也可以通过在 build.gradle 文件中的设置 jniLibs.srcDir 属性自己指定）
 
  - AAR 压缩包中位于 jni/ABI 目录中（.so 文件会自动包含到引用 AAR 压缩包的 APK 中）
@@ -41,6 +43,9 @@ Android 七种 CPU 架构，每种都关联着一个相应的ABI。
   - 在小于Android 5.0 的系统中，.so 文件位于 app 的 nativeLibraryPath 目录中
 
   - 在大于等于 Android 5.0 的系统中，.so 文件位于app 的 nativeLibraryRootDir/CPU_ARCH 目录中
+
+
+
 
 #### so (cpu)的兼容
 
@@ -63,6 +68,8 @@ Android 七种 CPU 架构，每种都关联着一个相应的ABI。
  - armeabi 的 so 文件兼容性很强，它能运行在除了 mips 和 mips64 的设备上，但在非 armeabi 设备上运行性能还是有所损耗
 
  - 64 位的 CPU 架构总能向下兼容其对应的 32 位指令集，如：x86_64 兼容 X86，arm64-v8a 兼容 rmeabi-v7a，mips64 兼容 mips
+
+ - 在64位设备上，如果 app 的 lib 目录下 存在 armeabi，则以 32 位兼容方式运行。如果存在 arm64-v8a 则以 64 位运行。如果没有任何 so，则 primaryCpuAbi 为空，按照系统的默认配置决定，也就是 64 位运行。
 
 
 
