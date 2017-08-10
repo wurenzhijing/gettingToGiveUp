@@ -214,15 +214,109 @@ public void quitSafely() {
     };
 ```
 
+ - quit 之后，会执行 Looper.loop() 之后的代码 ， 没有 quit 是永远不会执行的
 
 
+## Handler
+
+#### 构造器
+
+```java
+    public Handler(Callback callback, boolean async) {
+        if (FIND_POTENTIAL_LEAKS) {
+            final Class<? extends Handler> klass = getClass();
+            if ((klass.isAnonymousClass() || klass.isMemberClass() || klass.isLocalClass()) &&
+                    (klass.getModifiers() & Modifier.STATIC) == 0) {
+                Log.w(TAG, "The following Handler class should be static or leaks might occur: " +
+                    klass.getCanonicalName());
+            }
+        }
+		//  获取Looper ， sThreadLocal.get();
+        mLooper = Looper.myLooper();
+        if (mLooper == null) {
+            throw new RuntimeException(
+                "Can't create handler inside thread that has not called Looper.prepare()");
+        }
+        mQueue = mLooper.mQueue;
+        mCallback = callback;
+        mAsynchronous = async;
+    }
+
+    public Handler(Looper looper, Callback callback, boolean async) {
+        mLooper = looper;
+        mQueue = looper.mQueue;
+        mCallback = callback;
+        mAsynchronous = async;
+    }
+```
+
+初始化四个值
+
+ - mLooper ， 不能为 null ， Looper.myLooper()
+
+ - mQuene ， 消息队列 ， mLooper.mQuene
+
+ - mCallBack ， 处理消息 ， 可以为 null
+ ```java
+     public interface Callback {
+        public boolean handleMessage(Message msg);
+    }
+    ```
+
+ - mAsynchronous ， 是否异步 ， 默认 false
 
 
+#### 发送消息
 
+ - 将消息入队列
+```java
+    public boolean sendMessageAtTime(Message msg, long uptimeMillis) {
+        MessageQueue queue = mQueue;
+        if (queue == null) {
+            RuntimeException e = new RuntimeException(
+                    this + " sendMessageAtTime() called with no mQueue");
+            Log.w("Looper", e.getMessage(), e);
+            return false;
+        }
+        return enqueueMessage(queue, msg, uptimeMillis);
+    }
+```
 
+ - 设置 msg.target
+```java
+    private boolean enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis) {
+        msg.target = this;			// message 的 target是 这个handler
+        if (mAsynchronous) {
+            msg.setAsynchronous(true);
+        }
+        return queue.enqueueMessage(msg, uptimeMillis);
+    }
+```
 
+#### 处理消息
 
+  上面讲消息放进 MessageQuene ，然后 Looper.loop() 会去循环消息队列，由Handler处理消息 ， Looper.looper() 中 <code>msg.target.dispatchMessage(msg);</code> 处理消息 ， 上面发送消息时设置了 <code>msg.target = =this</code>
 
+ - dispatchMessage , 调度消息
+ ```java
+  public void dispatchMessage(Message msg) {
+        if (msg.callback != null) {
+            handleCallback(msg);
+        } else {
+            if (mCallback != null) {   // Handler 的 callback  ， 用户实现
+                if (mCallback.handleMessage(msg)) {
+                    return;
+                }
+            }
+            handleMessage(msg);		// Handler handlemessage ，用户实现
+        }
+    }
+
+    // Message 的 callback
+    private static void handleCallback(Message message) {
+        message.callback.run();
+    }
+    ```
 
 ## Thread
 
