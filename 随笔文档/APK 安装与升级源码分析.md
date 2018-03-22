@@ -870,7 +870,6 @@ mContext.enforceCallingOrSelfPermission(android.Manifest.permission.INSTALL_PACK
 
  - replaceNonSystemPackageLIF（）， 替换package中的内容
 ```java
-
 	private void replaceNonSystemPackageLIF(PackageParser.Package deletedPackage,
             PackageParser.Package pkg, final int policyFlags, int scanFlags, UserHandle user,
             int[] allUsers, String installerPackageName, PackageInstalledInfo res) {

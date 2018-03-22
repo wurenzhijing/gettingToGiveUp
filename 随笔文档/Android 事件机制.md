@@ -78,7 +78,7 @@
         });
         thread.start();
     ```
-    只会出现 run：out begin 和 run： ， 不会出现 run：begin end
+    只会出现 run：out begin 和 run： ， 不会出现 run：out end
 
  - 看一下 <code>Looper.loop()</code> 的源码
 ```java
